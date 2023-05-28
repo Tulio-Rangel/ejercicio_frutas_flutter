@@ -45,6 +45,7 @@ class _FruitListPageState extends State<FruitListPage> {
   }
 
   Future<void> _editFruit(Fruit fruit) async {
+    final index = _fruits.indexOf(fruit);
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
@@ -54,13 +55,17 @@ class _FruitListPageState extends State<FruitListPage> {
 
     if (result != null) {
       await fruitDao.updateFruit(result);
-      await _loadFruits();
+      setState(() {
+        _fruits[index] = result;
+      });
     }
   }
 
   Future<void> _deleteFruit(int id) async {
     await fruitDao.deleteFruit(id);
-    await _loadFruits();
+    setState(() {
+      _fruits.removeWhere((fruit) => fruit.id == id);
+    });
   }
 
   @override
