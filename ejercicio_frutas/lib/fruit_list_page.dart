@@ -12,7 +12,7 @@ class FruitListPage extends StatefulWidget {
 
 class _FruitListPageState extends State<FruitListPage> {
   final fruitDao = FruitDao();
-  List<Fruit> _fruits = [];
+  final List<Fruit> _fruits = [];
 
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _FruitListPageState extends State<FruitListPage> {
   Future<void> _loadFruits() async {
     final fruits = await fruitDao.getAllFruits();
     setState(() {
-      _fruits = fruits;
+      _fruits.addAll(fruits);
     });
   }
 
@@ -38,7 +38,9 @@ class _FruitListPageState extends State<FruitListPage> {
 
     if (result != null) {
       await fruitDao.insertFruit(result);
-      await _loadFruits();
+      setState(() {
+        _fruits.add(result);
+      });
     }
   }
 
