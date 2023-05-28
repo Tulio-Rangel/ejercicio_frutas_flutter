@@ -4,7 +4,7 @@ import 'package:ejercicio_frutas/fruit_model.dart';
 class AddEditFruitPage extends StatefulWidget {
   final Fruit fruit;
 
-  const AddEditFruitPage({super.key, required this.fruit});
+  const AddEditFruitPage({Key? key, required this.fruit}) : super(key: key);
 
   @override
   _AddEditFruitPageState createState() => _AddEditFruitPageState();
@@ -35,7 +35,7 @@ class _AddEditFruitPageState extends State<AddEditFruitPage> {
     final fruit = Fruit(
       name: name,
       description: description,
-      id: 0,
+      id: widget.fruit.id,
     );
 
     Navigator.pop(context, fruit);
@@ -45,7 +45,7 @@ class _AddEditFruitPageState extends State<AddEditFruitPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.fruit != null ? 'Edit Fruit' : 'Add Fruit'),
+        title: Text(widget.fruit.id != 0 ? 'Edit Fruit' : 'Add Fruit'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

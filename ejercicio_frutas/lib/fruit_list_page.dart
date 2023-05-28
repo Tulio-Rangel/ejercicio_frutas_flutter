@@ -13,6 +13,7 @@ class FruitListPage extends StatefulWidget {
 class _FruitListPageState extends State<FruitListPage> {
   final fruitDao = FruitDao();
   final List<Fruit> _fruits = [];
+  int _fruitIdCounter = 1;
 
   @override
   void initState() {
@@ -31,8 +32,8 @@ class _FruitListPageState extends State<FruitListPage> {
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>
-            AddEditFruitPage(fruit: Fruit(id: 0, name: '', description: '')),
+        builder: (context) => AddEditFruitPage(
+            fruit: Fruit(id: _fruitIdCounter, name: '', description: '')),
       ),
     );
 
@@ -40,6 +41,7 @@ class _FruitListPageState extends State<FruitListPage> {
       await fruitDao.insertFruit(result);
       setState(() {
         _fruits.add(result);
+        _fruitIdCounter++;
       });
     }
   }
