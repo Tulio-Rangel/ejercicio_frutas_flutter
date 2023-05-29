@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:ejercicio_frutas/fruit_model.dart';
-import 'package:ejercicio_frutas/database_helper.dart';
+import 'package:ejercicio_frutas/models/fruit_model.dart';
+import 'package:ejercicio_frutas/db/database_helper.dart';
 
 class FruitDao {
   final dbHelper = DatabaseHelper();

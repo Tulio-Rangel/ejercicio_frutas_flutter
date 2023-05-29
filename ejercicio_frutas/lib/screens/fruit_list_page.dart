@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ejercicio_frutas/fruit_model.dart';
-import 'package:ejercicio_frutas/add_edit_fruit_page.dart';
-import 'package:ejercicio_frutas/fruit_dao.dart';
+import 'package:ejercicio_frutas/models/fruit_model.dart';
+import 'package:ejercicio_frutas/screens/add_edit_fruit_page.dart';
+import 'package:ejercicio_frutas/db/fruit_dao.dart';
 
 class FruitListPage extends StatefulWidget {
   const FruitListPage({super.key});
